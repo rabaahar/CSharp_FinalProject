@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="318,12,0,0" TextWrapping="Wrap" Text=" Homework Checker" VerticalAlignment="Top" Width="170" TextChanged="TextBox_TextChanged" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="180,110,0,0" TextWrapping="Wrap" Text="  Year " VerticalAlignment="Top" Width="61" FontSize="18" TextChanged="TextBox_TextChanged_2" Foreground="SeaGreen"/>
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="382,107,0,0" TextWrapping="Wrap" Text="  Course " VerticalAlignment="Top" Width="80" FontSize="18" TextChanged="TextBox_TextChanged_1" Foreground="SeaGreen"/>
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="602,106,0,0" TextWrapping="Wrap" Text="  Tasks " VerticalAlignment="Top" Width="67" FontSize="18" TextChanged="TextBox_TextChanged_3" Foreground="SeaGreen"/>
+
 
     </Grid>
 </Window>
