@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Check;
+using Newtonsoft.Json;
 
 namespace CSharp_FinalProject
 {
@@ -25,6 +26,12 @@ namespace CSharp_FinalProject
     {
         public readonly string[] options = { "Hi" , "Bye" , "Shahd" , "rabea", "rabaa" };
 
+        FolderBrowserDialog dialog = new FolderBrowserDialog();
+        string[] courseFiles;
+        string[] homeWorkFiles;
+        string[] courseHomeWorks;
+        CourseInfo courseInfo = new CourseInfo();
+        List<Rules> rules = new List<Rules>();
 
         public MainWindow()
         {
@@ -33,12 +40,15 @@ namespace CSharp_FinalProject
         }
 
         private void btn_SelectFolder(object sender, RoutedEventArgs e)
-        {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            string[] courseFiles;
-            string[] homeWorkFiles;
-            string[] courseHomeWorks;
+        {  
             dialog.ShowDialog();
+            GetFilesAndDirectoriesPath();
+            GetCourseInfoAndGrades();
+            GetHomeWorkRulesAndGrades();
+        }
+
+        private void GetFilesAndDirectoriesPath()
+        {
             // get rule and grades files for the home work
             homeWorkFiles = Directory.GetFiles(dialog.SelectedPath);
             // get the students homework folders
@@ -47,6 +57,37 @@ namespace CSharp_FinalProject
             courseFiles = Directory.GetFiles(System.IO.Path.GetDirectoryName(dialog.SelectedPath));
         }
 
+        private void GetCourseInfoAndGrades()
+        {
+            foreach (var file in courseFiles)
+            {
+                if (System.IO.Path.GetFileName(file) == "course_info.json")
+                {
+                    courseInfo = JsonConvert.DeserializeObject<CourseInfo>(File.ReadAllText(file));
+                }
+
+                else if (System.IO.Path.GetFileName(file) == "course_grades.csv")
+                {
+                    // work with csv files
+                }
+            }
+        }
+
+        private void GetHomeWorkRulesAndGrades()
+        {
+            foreach (var file in homeWorkFiles)
+            {
+                if (System.IO.Path.GetFileName(file) == "rules.json")
+                {
+                    rules = JsonConvert.DeserializeObject<List<Rules>>(File.ReadAllText(file));
+                }
+
+                else if (System.IO.Path.GetFileName(file) == "grades.csv")
+                {
+                    // work with csv files
+                }
+            }
+        }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             

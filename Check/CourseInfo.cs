@@ -8,9 +8,9 @@ namespace Check
 {
     public class CourseInfo
     {
-        public int Id { get; set; }
-        public string Course_Name { get; set; }
-        public List<string> Students { get; set; } = new List<string>();
+        public string Id { get; set; }
+        public string Course_name { get; set; }
         public string? Language { get; set; }
+        public List<string> Students { get; set; } = new List<string>();
     }
 }
