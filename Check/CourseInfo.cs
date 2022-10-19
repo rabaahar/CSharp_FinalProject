@@ -11,9 +11,6 @@ namespace Check
         public int Id { get; set; }
         public string Course_Name { get; set; }
         public List<string> Students { get; set; } = new List<string>();
-        public string? Languge { get; set; }    
-
-        
-
+        public string? Language { get; set; }
     }
 }

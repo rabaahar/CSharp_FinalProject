@@ -13,6 +13,8 @@
         <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,100,0,0" TextWrapping="Wrap" Text="Choose a specific year :" VerticalAlignment="Top" Width="207" FontSize="18"/>
         <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,143,0,0" TextWrapping="Wrap" Text="Choose a specific Course from this year :" VerticalAlignment="Top" Width="326" FontSize="18"/>
         <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,185,0,0" TextWrapping="Wrap" Text="choose the task you want to check :" VerticalAlignment="Top" Width="306" FontSize="18"/>
-        
-    </Grid>
+        <StackPanel Grid.Column="0" Margin="30">
+            <Button x:Name="btnfolder" Content="Select Folder" Background="White" Foreground="Black" Click="btn_SelectFolder"  FontSize="14" Width="100"/>
+        </StackPanel>
+        </Grid>
 </Window>
