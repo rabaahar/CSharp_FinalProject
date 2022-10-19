@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSharp_FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox HorizontalAlignment="Left" Height="33" Margin="318,12,0,0" TextWrapping="Wrap" Text=" Homework Checker" VerticalAlignment="Top" Width="170" TextChanged="TextBox_TextChanged" FontSize="18"/>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="180,110,0,0" TextWrapping="Wrap" Text="  Year " VerticalAlignment="Top" Width="61" FontSize="18" TextChanged="TextBox_TextChanged_2" Foreground="SeaGreen"/>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="382,107,0,0" TextWrapping="Wrap" Text="  Course " VerticalAlignment="Top" Width="80" FontSize="18" TextChanged="TextBox_TextChanged_1" Foreground="SeaGreen"/>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="602,106,0,0" TextWrapping="Wrap" Text="  Tasks " VerticalAlignment="Top" Width="67" FontSize="18" TextChanged="TextBox_TextChanged_3" Foreground="SeaGreen"/>
-
-
+        Title="Homework Checker " Height="450" Width="800">
+    <Grid Background="LavenderBlush">
+        <ListBox x:Name="MyListBox" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="25" Margin="600,100,0,0" Width="130" />
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="600,143,0,0" TextWrapping="Wrap" Text="  Course " VerticalAlignment="Top" Width="130" FontSize="18" TextChanged="TextBox_TextChanged_1" Foreground="SeaGreen"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="600,185,0,0" TextWrapping="Wrap" Text="  Tasks " VerticalAlignment="Top" Width="130" FontSize="18" TextChanged="TextBox_TextChanged_3" Foreground="SeaGreen" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,100,0,0" TextWrapping="Wrap" Text="Choose a specific year :" VerticalAlignment="Top" Width="207" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,143,0,0" TextWrapping="Wrap" Text="Choose a specific Course from this year :" VerticalAlignment="Top" Width="326" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,185,0,0" TextWrapping="Wrap" Text="choose the task you want to check :" VerticalAlignment="Top" Width="306" FontSize="18"/>
+        
     </Grid>
 </Window>
