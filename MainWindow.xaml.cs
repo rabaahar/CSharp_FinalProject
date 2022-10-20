@@ -24,7 +24,6 @@ namespace CSharp_FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        public readonly string[] options = { "Hi" , "Bye" , "Shahd" , "rabea", "rabaa" };
 
         FolderBrowserDialog dialog = new FolderBrowserDialog();
         string[] courseFiles;
@@ -88,36 +87,16 @@ namespace CSharp_FinalProject
                 }
             }
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+       
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            
+            Close();
         }
 
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_3(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void bindListBox()
-        {
-            //MyListBox.ItemsSource = options;
-        }
-        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //<TextBox HorizontalAlignment="Left" Height="25" Margin="600,100,0,0" TextWrapping="Wrap" Text="  Year " VerticalAlignment="Top" Width="130" FontSize="18" TextChanged="TextBox_TextChanged_2" Foreground="SeaGreen"/>
-            //MessageBox.Show(MyListBox.SelectedItem.ToString());
-
-
+            WindowState = WindowState.Minimized;
         }
     }
 }

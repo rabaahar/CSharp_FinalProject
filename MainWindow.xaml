@@ -5,16 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSharp_FinalProject"
         mc:Ignorable="d"
-        Title="Homework Checker " Height="450" Width="800">
-    <Grid Background="LavenderBlush">
-        <ListBox x:Name="MyListBox" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="25" Margin="600,100,0,0" Width="130" />
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="600,143,0,0" TextWrapping="Wrap" Text="  Course " VerticalAlignment="Top" Width="130" FontSize="18" TextChanged="TextBox_TextChanged_1" Foreground="SeaGreen"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="600,185,0,0" TextWrapping="Wrap" Text="  Tasks " VerticalAlignment="Top" Width="130" FontSize="18" TextChanged="TextBox_TextChanged_3" Foreground="SeaGreen" RenderTransformOrigin="0.5,0.5"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,100,0,0" TextWrapping="Wrap" Text="Choose a specific year :" VerticalAlignment="Top" Width="207" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,143,0,0" TextWrapping="Wrap" Text="Choose a specific Course from this year :" VerticalAlignment="Top" Width="326" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="250,185,0,0" TextWrapping="Wrap" Text="choose the task you want to check :" VerticalAlignment="Top" Width="306" FontSize="18"/>
-        <StackPanel Grid.Column="0" Margin="30">
-            <Button x:Name="btnfolder" Content="Select Folder" Background="White" Foreground="Black" Click="btn_SelectFolder"  FontSize="14" Width="100"/>
-        </StackPanel>
-        </Grid>
+        Title="Homework Checker " Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="/images/image.png"
+                        Stretch="None"/>
+        </Border.Background>
+        <Border CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFFAF010" Offset="0"/>
+                    <GradientStop Color="#FF2FE352" Offset="0.75"/>
+                    <GradientStop Color="#FF169EC1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#FFE3EA5E" Offset="0"/>
+                    <GradientStop Color="#FF0DA4A4" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+
+
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <Grid Grid.Column="3">
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="Black"
+                            Background="Transparent"
+                            FontSize="20"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Click="btnClose_Click" Height="30" VerticalAlignment="Bottom"/>
+                </Grid>
+
+
+                <Grid Grid.Column="2">
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="Black"
+                            Background="Transparent"
+                            FontSize="20"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Click="btnMinimize_Click"/>
+                    
+
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock HorizontalAlignment="Left" Height="25" Margin="120,85,0,0" TextWrapping="Wrap" Text="Choose a specific HomeWork to check :" VerticalAlignment="Top" Width="400" FontSize="18"/>
+                    <StackPanel Margin="150,120,130,0">
+                        <Button x:Name="btnfolder" Content="Select Folder" Margin="60,10,0,0" Background="White" Foreground="Black" Click="btn_SelectFolder"  FontSize="14" Width="100" Height="30"/>
+                    </StackPanel>
+
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <StackPanel Grid.Column="0">
+                        
+                        
+                    </StackPanel>
+
+
+                    
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+
+
+    </Border>
+
+
 </Window>

@@ -8,8 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\image.png" />
+    <None Remove="Images\photo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Simplify.Windows.Forms" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\image.png" />
+    <Resource Include="Images\photo.jpg" />
   </ItemGroup>
 
 </Project>
