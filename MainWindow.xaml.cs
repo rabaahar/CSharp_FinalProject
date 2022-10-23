@@ -27,8 +27,9 @@ namespace CSharp_FinalProject
 
         FolderBrowserDialog dialog = new FolderBrowserDialog();
         string[] courseFiles;
-        string[] homeWorkFiles;
-        string[] courseHomeWorks;
+        string[] TaskFiles;
+        string[] TaskHomeWorks;
+        string[] HWSrecevie;
         CourseInfo courseInfo = new CourseInfo();
         List<Rules> rules = new List<Rules>();
 
@@ -44,14 +45,67 @@ namespace CSharp_FinalProject
             GetFilesAndDirectoriesPath();
             GetCourseInfoAndGrades();
             GetHomeWorkRulesAndGrades();
+            //foreach(var HW in TaskHomeWorks)
+            //{
+            //    HWSrecevie.Append(HW.Split('\\').Last().Split('_')[0]);
+            //}
+            foreach(var studentHomework in TaskHomeWorks)
+            {
+                Student s = new Student();
+                string StudentHWName = studentHomework.Split('\\').Last();
+                s.Id = StudentHWName.Split('_')[0];
+                s.Name = StudentHWName.Split('_')[1];
+                s.Course = courseInfo.Course_name;
+                s.Year = courseInfo.Course_year;
+                s.Grade = 100;
+                s.Average = 0;
+                string[] StudentFiles = Directory.GetFiles(studentHomework);
+
+                foreach (var rule in rules)
+                {
+                    if (rule.Rule_Number == 2)
+                    {
+                        bool exist = false;
+                        foreach (var file in StudentFiles)
+                        {
+                            if(file.Split('\\').Last() == rule.File_Name)
+                                exist = true;
+                        }
+                        if (exist == false)
+                            s.Grade -= rule.Points;
+                    }
+
+                    if(rule.Rule_Number == 3)
+                    {
+                        bool exp = false;
+                        foreach (var file in StudentFiles)
+                        {
+                            if (file.Split('\\').Last() == rule.File_Name)
+                            {
+                                foreach (var line in File.ReadAllLines(file))
+                                {
+                                    if (line.Contains(rule.Regular_Exp) == true)
+                                        exp = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        if (exp == false && s.Grade >= rule.Points)
+                            s.Grade -= rule.Points;
+                        else if(exp == false)
+                            s.Grade = 0;
+                    }
+                }
+            }
         }
 
         private void GetFilesAndDirectoriesPath()
         {
             // get rule and grades files for the home work
-            homeWorkFiles = Directory.GetFiles(dialog.SelectedPath);
+            TaskFiles = Directory.GetFiles(dialog.SelectedPath);
             // get the students homework folders
-            courseHomeWorks = Directory.GetDirectories(dialog.SelectedPath);
+            TaskHomeWorks = Directory.GetDirectories(dialog.SelectedPath);
             // get course info file and grades 
             courseFiles = Directory.GetFiles(System.IO.Path.GetDirectoryName(dialog.SelectedPath));
         }
@@ -74,7 +128,7 @@ namespace CSharp_FinalProject
 
         private void GetHomeWorkRulesAndGrades()
         {
-            foreach (var file in homeWorkFiles)
+            foreach (var file in TaskFiles)
             {
                 if (System.IO.Path.GetFileName(file) == "rules.json")
                 {

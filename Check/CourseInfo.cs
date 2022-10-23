@@ -10,6 +10,7 @@ namespace Check
     {
         public string Id { get; set; }
         public string Course_name { get; set; }
+        public string Course_year { get; set; }
         public string? Language { get; set; }
         public List<string> Students { get; set; } = new List<string>();
     }

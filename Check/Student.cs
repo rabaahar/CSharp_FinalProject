@@ -8,8 +8,11 @@ namespace Check
 {
     public class Student
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-        public int grade { get; set; }
+        public string Course { get; set; }
+        public string Year { get; set; }
+        public int Grade { get; set; } = 0;
+        public int Average { get; set; }
     }
 }
