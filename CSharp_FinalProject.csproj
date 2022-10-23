@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\add-student.png" />
+    <None Remove="Images\Add_Homwork.png" />
     <None Remove="Images\image.png" />
     <None Remove="Images\photo.jpg" />
   </ItemGroup>
@@ -18,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\add-student.png" />
+    <Resource Include="Images\Add_Homwork.png" />
     <Resource Include="Images\image.png" />
     <Resource Include="Images\photo.jpg" />
   </ItemGroup>
