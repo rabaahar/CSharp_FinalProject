@@ -29,7 +29,7 @@ namespace CSharp_FinalProject
         string[] courseFiles;
         string[] TaskFiles;
         string[] TaskHomeWorks;
-        string[] HWSrecevie;
+        string[] HWSrecevie = new string[100];
         CourseInfo courseInfo = new CourseInfo();
         List<Rules> rules = new List<Rules>();
 
@@ -45,11 +45,8 @@ namespace CSharp_FinalProject
             GetFilesAndDirectoriesPath();
             GetCourseInfoAndGrades();
             GetHomeWorkRulesAndGrades();
-            //foreach(var HW in TaskHomeWorks)
-            //{
-            //    HWSrecevie.Append(HW.Split('\\').Last().Split('_')[0]);
-            //}
-            foreach(var studentHomework in TaskHomeWorks)
+            int size = 0;
+            foreach (var studentHomework in TaskHomeWorks)
             {
                 Student s = new Student();
                 string StudentHWName = studentHomework.Split('\\').Last();
@@ -60,7 +57,8 @@ namespace CSharp_FinalProject
                 s.Grade = 100;
                 s.Average = 0;
                 string[] StudentFiles = Directory.GetFiles(studentHomework);
-
+                HWSrecevie.SetValue(s.Id, size);
+                size++;
                 foreach (var rule in rules)
                 {
                     if (rule.Rule_Number == 2)
@@ -96,7 +94,24 @@ namespace CSharp_FinalProject
                         else if(exp == false)
                             s.Grade = 0;
                     }
+
+                    //TODO: Add the student to csv file and check avg
                 }
+                foreach (var NotRecived in courseInfo.Students) 
+                {
+                    bool flag = false;
+                    for(int i=0; i<=size; i++)
+                    {
+                        if (NotRecived.Equals(HWSrecevie[i]))
+                            flag = true;
+                        break;
+                    }
+                    if(flag == false)
+                    {
+                        //TODO: Add 0 to student grade in csv and average
+                    }
+                }
+
             }
         }
 
