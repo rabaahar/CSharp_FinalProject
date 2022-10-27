@@ -136,7 +136,7 @@ namespace CSharp_FinalProject
 
                 else if (System.IO.Path.GetFileName(file) == "course_grades.csv")
                 {
-                    // work with csv files
+                    //TODO: work with csv files
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace CSharp_FinalProject
 
                 else if (System.IO.Path.GetFileName(file) == "grades.csv")
                 {
-                    // work with csv files
+                    //TODO: work with csv files
                 }
             }
         }
