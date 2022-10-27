@@ -165,7 +165,7 @@ namespace CSharp_FinalProject
                 {
                     csvgradespath = file;
                     System.IO.File.WriteAllText(file, string.Empty); //do it empty
-                    File.WriteAllText(file, "Id,Grade,HomeworkName" + Environment.NewLine);// add the fields line
+                    File.WriteAllText(file, "Id,Grade" + Environment.NewLine);// add the fields line
                 }
             }
         }
