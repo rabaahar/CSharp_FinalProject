@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Check;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace CSharp_FinalProject
 {
@@ -29,14 +30,15 @@ namespace CSharp_FinalProject
         string[] courseFiles;
         string[] TaskFiles;
         string[] TaskHomeWorks;
+        string csvgradespath;
         string[] HWSrecevie = new string[100];
         CourseInfo courseInfo = new CourseInfo();
         List<Rules> rules = new List<Rules>();
-
+        HttpClient clientRerequestor;
         public MainWindow()
         {
             InitializeComponent();
-            //bindListBox();
+            clientRerequestor = new HttpClient();
         }
 
         private void btn_SelectFolder(object sender, RoutedEventArgs e)
@@ -94,8 +96,12 @@ namespace CSharp_FinalProject
                         else if(exp == false)
                             s.Grade = 0;
                     }
-
-                    //TODO: Add the student to csv file and check avg
+                    string output = s.Id + "," + s.Grade.ToString() + Environment.NewLine;
+                    using (StreamWriter add_data = File.AppendText(csvgradespath))
+                    {
+                        add_data.WriteLine(output);
+                    }
+                    //TODO: check avg
                 }
                 foreach (var NotRecived in courseInfo.Students) 
                 {
@@ -108,7 +114,12 @@ namespace CSharp_FinalProject
                     }
                     if(flag == false)
                     {
-                        //TODO: Add 0 to student grade in csv and average
+                        string output = s.Id + "," + "0" + Environment.NewLine;
+                        using (StreamWriter add_data = File.AppendText(csvgradespath))
+                        {
+                            add_data.WriteLine(output);
+                        }
+                        //TODO:check average
                     }
                 }
 
@@ -152,7 +163,9 @@ namespace CSharp_FinalProject
 
                 else if (System.IO.Path.GetFileName(file) == "grades.csv")
                 {
-                    //TODO: work with csv files
+                    csvgradespath = file;
+                    System.IO.File.WriteAllText(file, string.Empty); //do it empty
+                    File.WriteAllText(file, "Id,Grade,HomeworkName" + Environment.NewLine);// add the fields line
                 }
             }
         }
@@ -165,7 +178,13 @@ namespace CSharp_FinalProject
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
+  
             WindowState = WindowState.Minimized;
+        }
+
+        private void btn_AddStudent(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

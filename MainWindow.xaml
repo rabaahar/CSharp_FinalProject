@@ -78,9 +78,14 @@
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock HorizontalAlignment="Left" Height="25" Margin="120,85,0,0" TextWrapping="Wrap" Text="Choose a specific Task folder to check :" VerticalAlignment="Top" Width="400" FontSize="18"/>
+                    <TextBlock HorizontalAlignment="Left" Height="25" Margin="120,85,0,0" 
+                               TextWrapping="Wrap" Text="Choose a specific Task folder to check :" 
+                               VerticalAlignment="Top" Width="400" FontSize="18"/>
                     <StackPanel Margin="150,120,130,0">
-                        <Button x:Name="btnfolder" Content="Select Folder" Margin="60,10,0,0" Background="White" Foreground="Black" Click="btn_SelectFolder"  FontSize="14" Width="100" Height="30"/>
+                        <Button x:Name="btnfolder" Content="Select Folder" 
+                                Margin="60,10,0,0" Background="White" 
+                                Foreground="Black" Click="btn_SelectFolder"  
+                                FontSize="14" Width="100" Height="30"/>
                     </StackPanel>
 
                 </Grid>
@@ -103,12 +108,10 @@
                                Margin="-160,100,0,0 "
                                Source="/images/add-student.png"
                                 />
-
-                        <TextBlock Text="Add Student"
-                                   Foreground="Black"
-                                   FontSize="15" Height="25" Width="112"
-                                   Margin="10,-25,0,0"/>
-
+                        <Button x:Name="btnAddStudent" Content="Add Student" 
+                                Margin="10,-25,0,0" Background="White" 
+                                Foreground="Black" Click="btn_AddStudent" 
+                                FontSize="15" Height="25" Width="112"/>
                     </StackPanel>
 
 
