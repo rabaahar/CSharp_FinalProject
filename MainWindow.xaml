@@ -96,10 +96,10 @@
                                Margin="-160,5,0,0 "
                                Source="/images/Add_Homwork.png"/>
 
-                        <TextBlock Text="Add HomeWork"
-                                   Foreground="Black"
-                                   FontSize="15" Height="25" Width="112"
-                                   Margin="10,-25,0,0"/>
+                        <Button x:Name="btnAddHomeWork" Content="Add HomeWork" 
+                                Margin="10,-25,0,0" Background="White" 
+                                Foreground="Black" Click="btnAddHomeWork_Click" 
+                                FontSize="15" Height="25" Width="112"/>
 
                     </StackPanel>
                     

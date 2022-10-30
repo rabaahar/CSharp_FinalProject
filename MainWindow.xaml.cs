@@ -183,5 +183,10 @@ namespace CSharp_FinalProject
             var resulte =
                 await clientRerequestor.GetStringAsync(@"https://localhost:7134/api/Student");
         }
+
+        private void btnAddHomeWork_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
