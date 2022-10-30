@@ -34,11 +34,10 @@ namespace CSharp_FinalProject
         string[] HWSrecevie = new string[100];
         CourseInfo courseInfo = new CourseInfo();
         List<Rules> rules = new List<Rules>();
-        HttpClient clientRerequestor;
+        HttpClient clientRerequestor = new HttpClient();
         public MainWindow()
         {
             InitializeComponent();
-            clientRerequestor = new HttpClient();
         }
 
         private void btn_SelectFolder(object sender, RoutedEventArgs e)
@@ -101,7 +100,6 @@ namespace CSharp_FinalProject
                     {
                         add_data.WriteLine(output);
                     }
-                    //TODO: check avg
                 }
                 foreach (var NotRecived in courseInfo.Students) 
                 {
@@ -119,7 +117,6 @@ namespace CSharp_FinalProject
                         {
                             add_data.WriteLine(output);
                         }
-                        //TODO:check average
                     }
                 }
 
@@ -178,13 +175,13 @@ namespace CSharp_FinalProject
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-  
             WindowState = WindowState.Minimized;
         }
 
-        private void btn_AddStudent(object sender, RoutedEventArgs e)
+        private async void btn_AddStudent(object sender, RoutedEventArgs e)
         {
-            
+            var resulte =
+                await clientRerequestor.GetStringAsync(@"https://localhost:7134/api/Student");
         }
     }
 }
