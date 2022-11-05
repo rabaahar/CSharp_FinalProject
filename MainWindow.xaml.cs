@@ -17,6 +17,8 @@ using System.IO;
 using Check;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net;
+using System.Net.Http.Headers;
 
 namespace CSharp_FinalProject
 {
@@ -180,8 +182,25 @@ namespace CSharp_FinalProject
 
         private async void btn_AddStudent(object sender, RoutedEventArgs e)
         {
-            var resulte =
-                await clientRerequestor.GetStringAsync(@"https://localhost:7134/api/Student");
+            clientRerequestor.BaseAddress = new Uri("https://localhost:7134/api/Student/Post");
+            clientRerequestor.DefaultRequestHeaders.Accept.Clear();
+            clientRerequestor.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            clientRerequestor.Timeout = TimeSpan.FromSeconds(Convert.ToDouble(1000000));
+
+            var s = new
+            {
+                Id = 1,
+                Student_Id = "123456789",
+                Student_Avg = "92",
+                Course_Name = "java",
+                Course_Year = "2020"
+            };
+
+            var response = clientRerequestor.PostAsJsonAsync("https://localhost:7134/api/Student/Post", s).Result;
+
+            var resulte = await clientRerequestor.GetStringAsync(@"https://localhost:7134/api/Student/Get");
+
         }
 
         private void btnAddHomeWork_Click(object sender, RoutedEventArgs e)
