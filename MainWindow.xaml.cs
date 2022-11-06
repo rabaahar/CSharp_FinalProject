@@ -112,7 +112,6 @@ namespace CSharp_FinalProject
                 {
                     if (NotRecived.Equals(HWSrecevie[i]))
                         flag = true;
-                    break;
                 }
                 if (flag == false)
                 {
