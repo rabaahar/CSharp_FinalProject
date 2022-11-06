@@ -37,9 +37,6 @@ namespace CSharp_FinalProject
         CourseInfo courseInfo = new CourseInfo();
         List<Rules> rules = new List<Rules>();
         HttpClient clientRerequestor = new HttpClient();
-        /// <summary>
-        /// 
-        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
