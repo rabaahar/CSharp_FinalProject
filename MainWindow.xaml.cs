@@ -97,31 +97,31 @@ namespace CSharp_FinalProject
                         else if(exp == false)
                             s.Grade = 0;
                     }
-                    string output = s.Id + "," + s.Grade.ToString() + Environment.NewLine;
+                }
+                string output = s.Id + "," + s.Grade.ToString();
+                using (StreamWriter add_data = File.AppendText(csvgradespath))
+                {
+                    add_data.WriteLine(output);
+                }
+            }
+            foreach (var NotRecived in courseInfo.Students)
+            {
+                Student s = new Student();
+                bool flag = false;
+                for (int i = 0; i <= size; i++)
+                {
+                    if (NotRecived.Equals(HWSrecevie[i]))
+                        flag = true;
+                    break;
+                }
+                if (flag == false)
+                {
+                    string output = NotRecived + "," + "0";
                     using (StreamWriter add_data = File.AppendText(csvgradespath))
                     {
                         add_data.WriteLine(output);
                     }
                 }
-                foreach (var NotRecived in courseInfo.Students) 
-                {
-                    bool flag = false;
-                    for(int i=0; i<=size; i++)
-                    {
-                        if (NotRecived.Equals(HWSrecevie[i]))
-                            flag = true;
-                        break;
-                    }
-                    if(flag == false)
-                    {
-                        string output = s.Id + "," + "0" + Environment.NewLine;
-                        using (StreamWriter add_data = File.AppendText(csvgradespath))
-                        {
-                            add_data.WriteLine(output);
-                        }
-                    }
-                }
-
             }
         }
 
@@ -146,7 +146,10 @@ namespace CSharp_FinalProject
 
                 else if (System.IO.Path.GetFileName(file) == "course_grades.csv")
                 {
-                    //TODO: work with csv files
+                    if(new FileInfo(file).Length == 0)
+                    {
+                        File.WriteAllText(file, "Id,Name,Average" + Environment.NewLine);
+                    }
                 }
             }
         }
